@@ -7,20 +7,18 @@ using System;
 public class Food : NetworkBehaviour
 {
     [SerializeField] BoomPartical particlePrefab;
-    public static event Action ServerFoodEaten;
+    public static event Action<GameObject> ServerFoodEaten;
 
-    
     [Server]
     void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        FindObjectOfType<Snake>().AddTail();
         BoomPartical boom = Instantiate
             (particlePrefab, transform.position, particlePrefab.transform.rotation);
         NetworkServer.Spawn(boom.gameObject);
         boom.DestroySelf(3f);
         NetworkServer.Destroy(gameObject);
-        ServerFoodEaten?.Invoke();
+        ServerFoodEaten?.Invoke(other.gameObject);
 
     }
 
