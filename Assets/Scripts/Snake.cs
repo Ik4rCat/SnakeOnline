@@ -2,17 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Mirror;
 
-public class Snake : MonoBehaviour
+public class Snake : NetworkBehaviour
 {
-    [SerializeField] float speed = 3f, rotationSpeed = 180f, speedChange = 0.5f;
+    [SerializeField] float rotationSpeed = 180f, speedChange = 0.5f;
+    [SerializeField,SyncVar] float speed = 3f;
 
-    public float Speed { get { return speed; } }
 
-    //void Start()
-    //{
-    //    Tails.Add(gameObject);
-    //}
+    public float Speed 
+    {
+        get { return speed; }
+        private  set { speed = value; }
+    }
+
+    public override void OnStartServer()
+    {
+        Food.ServerFoodEaten += OnServerFoodEaten;
+    }
+
+    public override void OnStopServer()
+    {
+        Food.ServerFoodEaten -= OnServerFoodEaten;
+    }
+
+    private void OnServerFoodEaten(GameObject playerWhoAte)
+    {
+        if (playerWhoAte != gameObject) return;
+
+        Speed += speedChange;
+    }
 
     void Update()
     {
