@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 8584362544005018056}
   - component: {fileID: 8149149937212773381}
   - component: {fileID: 5824446585138535992}
+  - component: {fileID: 2210719286043242076}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -328,9 +329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d024696697c73148a141efd73997a60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   rotationSpeed: 180
   speedChange: 0.5
+  speed: 3
 --- !u!114 &5290016452046876727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,6 +435,22 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   tailPrefab: {fileID: 6868670569204301540, guid: f0756ea880ffc1043bf943aabbd94281, type: 3}
+--- !u!114 &2210719286043242076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4031708365674451098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdd4f6a0d50c5444a577bc142a7d805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  tspawner: {fileID: 5824446585138535992}
 --- !u!1 &4031708365858201725
 GameObject:
   m_ObjectHideFlags: 0

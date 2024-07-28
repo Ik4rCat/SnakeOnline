@@ -4,11 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
 
-public class Snake : NetworkBehaviour
+public class SnakeMover: NetworkBehaviour
 {
     [SerializeField] float rotationSpeed = 180f, speedChange = 0.5f;
     [SerializeField,SyncVar] float speed = 3f;
-
 
     public float Speed 
     {
@@ -33,15 +32,11 @@ public class Snake : NetworkBehaviour
         Speed += speedChange;
     }
 
+    [Client]
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
         transform.Rotate(Vector3.up * rotationSpeed * Time.deltaTime * Input.GetAxis("Horizontal"));
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Border")) SceneManager.LoadScene(0);
     }
 
 }

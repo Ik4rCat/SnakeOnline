@@ -25,8 +25,7 @@ public class TailSpawner : NetworkBehaviour
     {
         if (playerWhoAte != gameObject) return;
 
-        GameObject tail = Instantiate(tailPrefab, Tails.Count != 0  ? Tails[Tails.Count -1].transform.position : transform.position, Quaternion.identity);
-        Tails.Add(tail);
-        NetworkServer.Spawn(tail);
+        GameObject tail = Instantiate(tailPrefab);
+        NetworkServer.Spawn(tail,connectionToClient);
     }
 }
