@@ -20,19 +20,25 @@ public class GameOverHandler : NetworkBehaviour
         PlayerSnake.ServerPlayerDespawned -= ServerOnPlayerDespawned;
     }
 
-
+    
     private void ServerOnPlayerSpawned(PlayerName player)
     {
         players.Add(player);
     }
-    
 
+    
     private void ServerOnPlayerDespawned(PlayerName player)
     {
         players.Remove(player);
         if(players.Count != 1) return;
 
-        print(players[0].Name);
+        RpcGameOver(players[0].Name);
+    }
+
+    [ClientRpc]
+    private void RpcGameOver(string winner)
+    {
+        print(winner);
     }
 
 }
