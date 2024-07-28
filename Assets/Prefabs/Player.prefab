@@ -451,6 +451,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   tspawner: {fileID: 5824446585138535992}
+  playerName: {fileID: 8149149937212773381}
 --- !u!1 &4031708365858201725
 GameObject:
   m_ObjectHideFlags: 0

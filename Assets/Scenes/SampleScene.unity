@@ -1276,6 +1276,7 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
+  - {fileID: 2724438552832595580, guid: 9dcb5d5a29099944d81339b20f4e73d3, type: 3}
   - {fileID: 352667387723543661, guid: d947498f9014d7243bdc6d277b9bead7, type: 3}
   - {fileID: 2564288885050272488, guid: 46c197db3f0ffdb4baf92e18958245e0, type: 3}
   - {fileID: 3189939752094581079, guid: f4562d466179f2b4084db2f787b69b56, type: 3}
@@ -1296,6 +1297,7 @@ MonoBehaviour:
   evaluationInterval: 3
   timeInterpolationGui: 0
   foodSpawnerPrefab: {fileID: 25208198856061998, guid: d947498f9014d7243bdc6d277b9bead7, type: 3}
+  gameOverHandlerPrefab: {fileID: 8759835925156240411, guid: 9dcb5d5a29099944d81339b20f4e73d3, type: 3}
 --- !u!1 &1836586823
 GameObject:
   m_ObjectHideFlags: 0

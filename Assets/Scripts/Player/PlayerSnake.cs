@@ -2,13 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
 public class PlayerSnake : NetworkBehaviour
 {
     [SerializeField] TailSpawner tspawner;
+    [SerializeField] PlayerName playerName;
+
+    public static event Action<PlayerName> ServerPlayerSpawned;
+    public static event Action<PlayerName> ServerPlayerDespawned;
+
+    public override void OnStartServer()
+    {
+        ServerPlayerSpawned?.Invoke(playerName);
+    }
+
+
+
 
     [Server]
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
         if (other.TryGetComponent(out NetworkIdentity networkIdentity) &&
             networkIdentity.connectionToClient == connectionToClient) return;
@@ -32,6 +45,7 @@ public class PlayerSnake : NetworkBehaviour
         }
 
         NetworkServer.Destroy(gameObject);
+        ServerPlayerDespawned?.Invoke(playerName);
     }
 
 }
