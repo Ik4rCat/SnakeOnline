@@ -300,8 +300,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d50d5f276f00bf40b0d73938bb41df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
   canvas: {fileID: 5018036494877383871}
   winerNameText: {fileID: 1880157494139119518}
+  restartButton: {fileID: 1503757924807143039}
 --- !u!1 &6171485118824744968
 GameObject:
   m_ObjectHideFlags: 0
